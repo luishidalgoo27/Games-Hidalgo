@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.bg-game {
+    background-image: url('/fondoreact.avif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
