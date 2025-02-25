@@ -47,8 +47,8 @@ function PublisherDetails() {
       {publisher && (
         <>
           <h1 className="text-3xl font-bold mb-6 text-center text-amber-50">{publisher.name}</h1>
-          <p className="text-center text-amber-50 mb-6">{publisher.description}</p>
-        </>
+          <p className="text-center text-amber-50 mb-6" dangerouslySetInnerHTML={{ __html: publisher.description }}></p>
+          </>
       )}
       <h2 className="text-2xl font-bold mb-4 text-center text-amber-50">Juegos de este Publisher</h2>
       {games && games.length > 0 ? (
