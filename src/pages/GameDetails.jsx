@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 function GameDetails() {
   const { id } = useParams();
@@ -54,11 +54,6 @@ function GameDetails() {
           </div>
 
           <div className="bg-gray-700 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">🕹️ Plataformas</h3>
-            <p>{game.platforms.map(p => p.platform.name).join(', ') || 'No disponible'}</p>
-          </div>
-
-          <div className="bg-gray-700 p-4 rounded-lg">
             <h3 className="text-lg font-semibold mb-2">⭐ Puntuación</h3>
             <p>{game.rating || 'No disponible'}</p>
           </div>
@@ -67,6 +62,42 @@ function GameDetails() {
             <h3 className="text-lg font-semibold mb-2">📅 Fecha de lanzamiento</h3>
             <p>{game.released || 'No disponible'}</p>
           </div>
+
+          <div className="bg-gray-700 p-4 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">🏷️ Tags</h3>
+          <p>
+            {game.tags.map((tag) => (
+              <Link 
+                key={tag.id} 
+                to={`/tag/${tag.id}`}
+                className="inline-block bg-purple-600 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2 hover:bg-purple-700"
+              >
+                {tag.name}
+              </Link>
+            ))}
+          </p>
+        </div>
+
+        <div className="bg-gray-700 p-4 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">🏢 Publisher</h3>
+          <p>
+            {game.publishers.map((publisher) => (
+              <Link 
+                key={publisher.id} 
+                to={`/publisher/${publisher.id}`}
+                className="text-blue-400 hover:underline"
+              >
+                {publisher.name}
+              </Link>
+            ))}
+          </p>
+        </div>
+
+        {/* Plataformas ya estaban incluidas, pero las dejamos aquí para referencia */}
+        <div className="bg-gray-700 p-4 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">🕹️ Plataformas</h3>
+          <p>{game.platforms.map(p => p.platform.name).join(', ') || 'No disponible'}</p>
+        </div>
         </div>
       </div>
     </div>
